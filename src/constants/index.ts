@@ -3,7 +3,6 @@ export interface TrimConfig {
   widthMM: number;
   heightMM: number;
   thicknessMM: number; // per sheet (2 pages)
-  paperWeightG: number; // gsm
 }
 
 export interface FontMeta {
@@ -14,20 +13,20 @@ export interface FontMeta {
 
 export const TrimSizes: Record<string, TrimConfig> = {
   // ISO A series
-  "A4": { name: "A4", widthMM: 210, heightMM: 297, thicknessMM: 0.115, paperWeightG: 75 },
-  "A5": { name: "A5", widthMM: 148, heightMM: 210, thicknessMM: 0.115, paperWeightG: 75 },
-  "A6": { name: "A6 Pocket", widthMM: 105, heightMM: 148, thicknessMM: 0.100, paperWeightG: 80 },
+  "A4": { name: "A4", widthMM: 210, heightMM: 297, thicknessMM: 0.115   },
+  "A5": { name: "A5", widthMM: 148, heightMM: 210, thicknessMM: 0.115,},
+  "A6": { name: "A6 Pocket", widthMM: 105, heightMM: 148, thicknessMM: 0.100 },
 
   // ISO B series (very common for books)
-  "B5": { name: "B5", widthMM: 176, heightMM: 250, thicknessMM: 0.115, paperWeightG: 75 },
-  "B6": { name: "B6 (Light Novel)", widthMM: 125, heightMM: 176, thicknessMM: 0.110, paperWeightG: 75 },
+  "B5": { name: "B5", widthMM: 176, heightMM: 250, thicknessMM: 0.115 },
+  "B6": { name: "B6 (Light Novel)", widthMM: 125, heightMM: 176, thicknessMM: 0.110 },
 
   // Thai publishing common
-  "16k": { name: "16k (Thai Book)", widthMM: 185, heightMM: 260, thicknessMM: 0.115, paperWeightG: 75 },
-  "14.5x21": { name: "Thai Novel 14.5x21", widthMM: 145, heightMM: 210, thicknessMM: 0.115, paperWeightG: 75 },
+  "16k": { name: "16k (Thai Book)", widthMM: 185, heightMM: 260, thicknessMM: 0.115 },
+  "14.5x21": { name: "Thai Novel 14.5x21", widthMM: 145, heightMM: 210, thicknessMM: 0.115 },
 
   // Pocket book
-  "pocket": { name: "Pocket Book", widthMM: 110, heightMM: 178, thicknessMM: 0.105, paperWeightG: 70 },
+  "pocket": { name: "Pocket Book", widthMM: 110, heightMM: 178, thicknessMM: 0.105 },
 };
 
 export const FontRegistry: Record<string, FontMeta> = {

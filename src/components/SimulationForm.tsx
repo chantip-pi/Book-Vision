@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SimulateRequest } from '../types';
 import { Book, Type, Ruler, Zap } from 'lucide-react';
 import { TrimSizes, FontRegistry } from '../constants';
+import PaperSizeDisplay from './PaperSizeDisplay';
 
 interface SimulationFormProps {
   onSubmit: (request: SimulateRequest) => void;
@@ -22,7 +23,7 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
   const [formData, setFormData] = useState<SimulateRequest>({
     trim_size: 'B5',
     font_key: 'sarabun',
-    font_size_pt: 11,
+    font_size_pt: 14,
     line_spacing: 1.2,
     paper_gsm: 75,
     page_goal: 200,
@@ -41,14 +42,17 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
         <Book className="w-6 h-6 text-purple-600" />
         Book Simulation Parameters
       </h2>
-      
+
       <form onSubmit={handleSubmit} className="space-y-6">
+        <h3 className="text-xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+          Paper setting
+        </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Trim Size */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
               <Ruler className="w-4 h-4" />
-              Trim Size
+              Paper Size
             </label>
             <select
               value={formData.trim_size}
@@ -129,7 +133,14 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             />
           </div>
-
+        </div>
+         <div>
+            <PaperSizeDisplay trimSize={formData.trim_size} />
+          </div>
+        <h3 className="text-xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+          Writing setting
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Page Goal */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -145,10 +156,10 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
             />
           </div>
 
-          {/* Current Character Count */}
+          {/* Current Character Count (optional) */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Current Character Count
+              Current Character Count (optional)
             </label>
             <input
               type="number"
@@ -185,7 +196,7 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
           >
             {loading ? 'Simulating...' : 'Simulate by Page Goal'}
           </button>
-          
+
           <button
             type="button"
             onClick={() => onSubmit({ ...formData, page_goal: 0 })}
@@ -195,6 +206,8 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
             {loading ? 'Simulating...' : 'Simulate by Current Progress'}
           </button>
         </div>
+
+
       </form>
     </div>
   );

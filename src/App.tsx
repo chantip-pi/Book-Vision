@@ -4,7 +4,6 @@ import ResultsDisplay from './components/ResultsDisplay'
 import { SimulateRequest, SimulationResponse } from './types'
 import { simulateBook } from './services/calculations'
 import { Book } from 'lucide-react'
-import { Card } from  './components/ui/card'
 
 function App() {
   const [results, setResults] = useState<SimulationResponse | null>(null)
@@ -37,7 +36,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <header className="text-center mb-10">
@@ -55,37 +54,23 @@ function App() {
         {/* Error Display */}
         {error && (
           <div className="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-lg">
-            <div className="flex">
-              <div className="ml-3">
-                <p className="text-sm text-red-700">{error}</p>
-              </div>
-            </div>
+            <p className="text-sm text-red-700">{error}</p>
           </div>
         )}
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
           {/* Form Column */}
-          <Card className='bg-white rounded-xl shadow-xl p-8 border-l-8 border-purple-500'>
-            <SimulationForm onSubmit={handleSimulate} loading={loading} />
-          </Card>
+          <SimulationForm onSubmit={handleSimulate} loading={loading} />
           
           {/* Results Column */}
-          <Card className='bg-white rounded-xl shadow-xl p-8 border-l-8 border-purple-500'>
-            <ResultsDisplay results={results} loading={loading} />
-          </Card>
+          <ResultsDisplay results={results} loading={loading} />
         </div>
 
-        {/* Footer */}
-        <footer className="text-center mt-12 text-purple-100">
-          <p className="text-sm">
-            Plan your perfect book with precise calculations and beautiful visualizations
-          </p>
-        </footer>
+
       </div>
     </div>
   )
 }
 
 export default App
-
