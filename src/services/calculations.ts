@@ -147,8 +147,9 @@ export const simulateBook = (params: {
     daysRemaining = Math.ceil(charsNeeded / dailyCharTarget);
   }
 
-  // Calculate total word count (assuming 5 characters per word)
-  const totalWords = Math.floor((pageCount * layout.charsPerPage) / 5);
+  // Calculate total word count based on goal or current progress
+  const pageCountForWords = pageGoal || pageCount;
+  const totalWords = Math.floor((pageCountForWords * layout.charsPerPage) / 5);
 
   const result = {
     layout: {
