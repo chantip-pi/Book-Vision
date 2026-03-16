@@ -26,9 +26,9 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
     font_size_pt: 14,
     line_spacing: 1.2,
     paper_gsm: 75,
-    page_goal: 200,
-    current_char_count: 0,
-    daily_char_target: 1000,
+    page_goal: 150,
+    current_char_count: 65000,
+    daily_char_target: 5000,
   });
 
   const handleSubmit = (e: React.FormEvent) => {
