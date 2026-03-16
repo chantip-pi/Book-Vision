@@ -47,7 +47,7 @@ function App() {
             </h1>
           </div>
           <p className="text-xl text-purple-100 max-w-2xl mx-auto">
-            Simulate your book's physical properties and track your writing progress
+            จำลองขนาดหนังสือและติดตามความคืบหน้าในการเขียน
           </p>
         </header>
 

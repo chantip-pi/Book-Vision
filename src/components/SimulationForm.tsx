@@ -40,19 +40,19 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
     <div className="bg-white rounded-xl shadow-xl p-8 border-l-8 border-purple-500">
       <h2 className="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">
         <Book className="w-6 h-6 text-purple-600" />
-        Book Simulation Parameters
+        ตั้งค่าหนังสือ
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <h3 className="text-xl font-bold mb-6 text-gray-800 flex items-center gap-2">
-          Paper setting
+        ตั้งค่าหน้ากระดาษ
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Trim Size */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
               <Ruler className="w-4 h-4" />
-              Paper Size
+             ขนาดกระดาษ
             </label>
             <select
               value={formData.trim_size}
@@ -71,7 +71,7 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
               <Type className="w-4 h-4" />
-              Font
+       ฟอนต์
             </label>
             <select
               value={formData.font_key}
@@ -89,7 +89,7 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
           {/* Font Size */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Font Size (pt)
+              ขนาดฟอนต์ (pt)
             </label>
             <input
               type="number"
@@ -105,7 +105,7 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
           {/* Line Spacing */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Line Spacing
+              ระยะห่างบรรทัด
             </label>
             <input
               type="number"
@@ -121,7 +121,7 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
           {/* Paper GSM */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Paper Weight (GSM)
+              น้ำหนักกระดาษ (GSM)
             </label>
             <input
               type="number"
@@ -138,13 +138,13 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
             <PaperSizeDisplay trimSize={formData.trim_size} />
           </div>
         <h3 className="text-xl font-bold mb-6 text-gray-800 flex items-center gap-2">
-          Writing setting
+          เป้าหมายการเขียน
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Page Goal */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Page Goal
+              จำนวนหน้า
             </label>
             <input
               type="number"
@@ -159,7 +159,7 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
           {/* Current Character Count (optional) */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Current Character Count (optional)
+              จำนวนตัวอักษรปัจจุบัน (optional)
             </label>
             <input
               type="number"
@@ -174,7 +174,7 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
               <Zap className="w-4 h-4" />
-              Daily Character Target
+              เป้าหมายจำนวนตัวอักษรต่อวัน
             </label>
             <input
               type="number"
@@ -188,26 +188,13 @@ export default function SimulationForm({ onSubmit, loading }: SimulationFormProp
           </div>
         </div>
 
-        <div className="flex gap-4">
-          <button
-            type="submit"
-            disabled={loading}
-            className="flex-1 bg-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-purple-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
-          >
-            {loading ? 'Simulating...' : 'Simulate by Page Goal'}
-          </button>
-
-          <button
-            type="button"
-            onClick={() => onSubmit({ ...formData, page_goal: 0 })}
-            disabled={loading || formData.current_char_count === 0}
-            className="flex-1 bg-indigo-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
-          >
-            {loading ? 'Simulating...' : 'Simulate by Current Progress'}
-          </button>
-        </div>
-
-
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-purple-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+        >
+          {loading ? 'Simulating...' : 'Simulate'}
+        </button>
       </form>
     </div>
   );
